@@ -1,0 +1,10 @@
+<h1>Welcome to the 3039 Data Gathering Tool - V1! </h1>
+
+<%= form_for @session, url: {action: "start", :controller=>"session"}, :id => 'start' do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit "Start Session!" %>
+<% end %>
+
+
+<a id="enter" style="display:none" href=""><button class="btn btn-primary">Data Entry for Start of Line</button></a>
+<a id="exit" style="display:none" href=""><button class="btn btn-primary">Data Entry for End of Line</button></a>
