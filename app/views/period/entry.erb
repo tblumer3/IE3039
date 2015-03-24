@@ -1,0 +1,19 @@
+<%= form_tag("/period/" + @period.id.to_s + "/new_person", :id => 'make_person', method: "post") do %>
+    <%= text_field_tag(:description) %>
+
+    <%= radio_button_tag(:isFemale, true) %>
+    <%= label_tag("isFemale_true", "Female") %>
+    <%= radio_button_tag(:isFemale, false) %>
+    <%= label_tag("isFemale_false", "Male") %>
+
+    <%= submit_tag("Save Person") %>
+<% end %>
+
+<table id="made_person" style="display:none">
+    <tr>
+        <th>Description</th>
+        <th>______</th>
+        <th>isFemale</th>
+        <th>Time Entry</th>
+    </tr>
+</table>

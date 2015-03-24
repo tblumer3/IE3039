@@ -1,5 +1,5 @@
 class MainController < ApplicationController
     def index
-        @session = Session.new
+        @period = Period.new
     end
 end

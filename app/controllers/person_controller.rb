@@ -1,16 +1,18 @@
 class PersonController < ApplicationController
     def create
-        @person = Person.new(params[:person])
-        @person.session = params[:session_id]
+        @period = Period.find(params[:period_id])
+        
+        @person = Person.new(person_params)
+        @person.period = @period
         success = @person.save
 
         respond_to do |format|
             format.json { 
-                if (success) {
-                    render json:  {'status' => 'success'}
-                } else {
+                if success 
+                    render json:  {'status' => @person}
+                else 
                     render json:  {'status' => 'failure'}
-                }
+                end
             }
         end
     end
@@ -23,6 +25,6 @@ class PersonController < ApplicationController
 
     private
         def person_params
-            params.require(:person).permit(:description, :age, :gender)
+            params.permit(:description, :isFemale)
         end
 end

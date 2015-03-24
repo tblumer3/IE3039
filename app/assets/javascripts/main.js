@@ -1,14 +1,14 @@
 $(function() {
-    $("#new_session").submit(function(event) {
+    $("#new_period").submit(function(event) {
         event.preventDefault();
-        var data = $("#new_session").serialize();
+        var data = $("#new_period").serialize();
         $.ajax({
             type: "POST",
             url: "/start",
             data: data,
             success: function(data) {
                 console.log(data);
-                session_started(data);
+                period_started(data);
             },
             error:function(data) {
                 return false;
@@ -17,7 +17,7 @@ $(function() {
     });
 });
 
-var session_started = function(data) {
+var period_started = function(data) {
   var enter = $("#enter");
   var exit = $("#exit");
   enter.attr("href", "entry/" + data['id'])

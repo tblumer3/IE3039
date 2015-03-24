@@ -7,16 +7,16 @@ Rails.application.routes.draw do
 
   # get 'active_sessions' => 'session#all'
 
-  post 'start' => 'session#start'
-  get 'entry/:session_id' => 'session#entry'
-  get 'exit/:session_id' => 'session#exit'
+  post 'start' => 'period#start'
+  get 'entry/:period_id' => 'period#entry'
+  get 'exit/:period_id' => 'period#exit'
 
 
-  post 'end/:session_id' => 'session#end'
-  post 'session/:session_id/new_person' => 'person#create'
+  post 'end/:period_id' => 'period#end'
+  post 'period/:period_id/new_person' => 'person#create'
 
-  get 'session/:session_id/person' => 'person#all'
-  post 'session/:session_id/person/:person_id' => 'person#end'
+  get 'period/:period_id/person' => 'person#all'
+  post 'period/:period_id/person/:person_id' => 'person#end'
 
 
 
