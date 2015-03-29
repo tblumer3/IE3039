@@ -15,15 +15,29 @@ $(function() {
             }
         });
     });
+
+    $(".period_edit").click(function(event) {
+      event.preventDefault();
+      var id = event.target.id;
+      console.log("fuck");
+      use_period(id);
+    });
 });
 
 var period_started = function(data) {
   var enter = $("#enter");
   var exit = $("#exit");
-  enter.attr("href", "entry/" + data['id'])
-  exit.attr("href", "exit/" + data['id'])
+  enter.attr("href", "entry/" + data['id']);
+  exit.attr("href", "exit/" + data['id']);
   enter.show();
   exit.show();
 };
 
-    
+var use_period = function(id) {
+  var enter = $("#enter");
+  var exit = $("#exit");
+  enter.attr("href", "entry/" + id);
+  exit.attr("href", "exit/" + id);
+  enter.show();
+  exit.show();
+};

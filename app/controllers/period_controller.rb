@@ -16,16 +16,29 @@ class PeriodController < ApplicationController
 
     def entry
         @period = Period.find(params[:period_id])
+        @people = Person.where(period_id: @period.id).order('entry_time DESC')
     end
 
     def exit
         @period = Period.find(params[:period_id])
+
+        @people = Person.where(period_id: @period.id).order('entry_time DESC')
     end
 
     def end
         @period = Period.find(params[:period_id])
-        @period.end_time = Time.now()
-        @period.save
+        @period.time_end = Time.now()
+        result = @period.save
+
+        respond_to do |format|
+            format.json { 
+                if result
+                    render json: @period
+                else
+                    render json: false
+                end 
+            }
+        end
     end
 
     private

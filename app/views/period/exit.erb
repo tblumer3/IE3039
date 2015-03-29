@@ -1,0 +1,35 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Person Description</th>
+            <th>Gender</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Stop Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @people.each do |person| %>
+            <tr>
+                <td><%= person.description%></td>
+                <td><%= person.isFemale ? "Female" : "Male" %></td>
+                <td><%= person.entry_time %></td>
+                <td><%= person.exit_time %></td>
+                <td>
+                    <% if person.exit_time.nil? %>
+                        <%= form_tag('/period/' + @period.id.to_s + '/person/' + person.id.to_s) do %>
+                            <%= submit_tag 'Exit!!! (Press here to stop Time)' %>
+                        <% end %>
+                    <% else %>
+                        already exited
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+
+<a href="/end/<%=@period.id%>" id="end_period">End This Session!</a>

@@ -15,6 +15,40 @@ $(function() {
             }
         });
     });
+
+
+    $("#end_period").click(function(event) {
+        console.log("well I'll fuck a goat for christmas");
+        event.preventDefault();
+        var url = $("#end_period").attr('href');
+        $.ajax({
+            type: "POST",
+            url: url,
+            success: function(data) {
+                end_session(data);
+            },
+            error:function(data) {
+                return false;
+            }
+        });
+    });
+
+    // $(".stop_person").click(function(event) {
+    //     event.preventDefault();
+    //     var id = event.target.id;
+    //     var url = "/period/" + $('.table').attr('id') + "/person/" + id;
+    //     console.log(url);
+    //     $.ajax({
+    //         type: "POST",
+    //         url: url,
+    //         success: function(data) {
+    //             stop_person(data);
+    //         },
+    //         error:function(data) {
+    //             return false;
+    //         }
+    //     });
+    // });
 });
 
 
@@ -22,8 +56,20 @@ var made_person = function(data) {
     $("#make_person").trigger("reset");
     console.log("You made a person, and it only took a little sex and 9 months of waiting!");
     console.log(data.status.description);
-    $('#made_person tr:last').after('<tr><td>'+ data.status.description +'</td><td></td><td>'+ data.status.isFemale +'</td></tr></tr>');
+    $('#made_person tr:first').after('<tr><td>'+ data.status.description +'</td><td>'+ data.status.isFemale +'</td><td>'+ data.status.entry_time +'</td></tr>');
     if ( $('#made_person').is(":hidden") ) {
         $('#made_person').show()
     };
 };
+
+
+var end_session = function(data) {
+    console.log(data);
+};
+
+var stop_person = function(data) {
+    console.log("tits and shits");
+};
+
+
+

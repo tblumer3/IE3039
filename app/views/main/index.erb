@@ -8,3 +8,24 @@
 
 <a id="enter" style="display:none" href=""><button class="btn btn-primary">Data Entry for Start of Line</button></a>
 <a id="exit" style="display:none" href=""><button class="btn btn-primary">Data Entry for End of Line</button></a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Period Name</th>
+            <th>Edit/Add!</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @periods.each do |period| %>
+            <tr>
+                <td><%= period.title%></td>
+                <td><a href="" id="<%= period.id %>" class="period_edit">Use this Period</a></td>
+                <td><%= period.time_start %></td>
+                <td><%= period.time_end %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -9,11 +9,24 @@
     <%= submit_tag("Save Person") %>
 <% end %>
 
-<table id="made_person" style="display:none">
-    <tr>
-        <th>Description</th>
-        <th>______</th>
-        <th>isFemale</th>
-        <th>Time Entry</th>
-    </tr>
+<table id="made_person" class="table">
+    <thead>
+        <tr>
+            <th>Person Description</th>
+            <th>Gender</th>
+            <th>Start Time</th>
+            <th>Exit Time</th>
+            <th>Stop The Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @people.each do |person| %>
+            <tr>
+                <td><%= person.description%></td>
+                <td><%= person.isFemale ? "Female" : "Male" %></td>
+                <td><%= person.entry_time %></td>
+                <td><%= person.exit_time %></td>
+            </tr>
+        <% end %>
+    </tbody>
 </table>
