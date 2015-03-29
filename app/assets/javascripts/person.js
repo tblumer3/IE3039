@@ -1,4 +1,4 @@
-$(function() {
+var ready = function() {
     $("#make_person").submit(function(event) {
         event.preventDefault();
         var data = $("#make_person").serialize();
@@ -32,24 +32,7 @@ $(function() {
             }
         });
     });
-
-    // $(".stop_person").click(function(event) {
-    //     event.preventDefault();
-    //     var id = event.target.id;
-    //     var url = "/period/" + $('.table').attr('id') + "/person/" + id;
-    //     console.log(url);
-    //     $.ajax({
-    //         type: "POST",
-    //         url: url,
-    //         success: function(data) {
-    //             stop_person(data);
-    //         },
-    //         error:function(data) {
-    //             return false;
-    //         }
-    //     });
-    // });
-});
+};
 
 
 var made_person = function(data) {
@@ -72,4 +55,5 @@ var stop_person = function(data) {
 };
 
 
-
+$(document).ready(ready);
+$(document).on('page:load', ready);

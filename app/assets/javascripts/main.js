@@ -1,4 +1,4 @@
-$(function() {
+var ready = function() {
     $("#new_period").submit(function(event) {
         event.preventDefault();
         var data = $("#new_period").serialize();
@@ -22,7 +22,7 @@ $(function() {
       console.log("fuck");
       use_period(id);
     });
-});
+};
 
 var period_started = function(data) {
   var enter = $("#enter");
@@ -41,3 +41,10 @@ var use_period = function(id) {
   enter.show();
   exit.show();
 };
+
+
+
+
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
