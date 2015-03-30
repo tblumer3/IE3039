@@ -1,5 +1,5 @@
-<%= form_tag("/period/" + @period.id.to_s + "/new_person", :id => 'make_person', method: "post") do %>
-    <%= text_field_tag(:description) %>
+<%= form_tag("/period/" + @period.id.to_s + "/new_person", :id => 'make_person', method: "post", :class => "col-sm-8") do %>
+    <%= text_field_tag :description, nil, :class => 'input-lg' %>
 
     <%= radio_button_tag(:isFemale, true) %>
     <%= label_tag("isFemale_true", "Female") %>
@@ -9,6 +9,11 @@
     <%= submit_tag("Save Person") %>
 <% end %>
 
+<div class="col-sm-4">
+    Number of People Recorded:  <span style="font-size:35px;"> <%= @count %></span>
+</div>
+
+
 <table id="made_person" class="table">
     <thead>
         <tr>
@@ -16,7 +21,6 @@
             <th>Gender</th>
             <th>Start Time</th>
             <th>Exit Time</th>
-            <th>Stop The Time</th>
         </tr>
     </thead>
     <tbody>

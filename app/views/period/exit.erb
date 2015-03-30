@@ -6,7 +6,9 @@
             <th>Gender</th>
             <th>Start Time</th>
             <th>End Time</th>
+            <th>Time in Line (min)</th>
             <th>Stop Time</th>
+            <th>Balk</th>
         </tr>
     </thead>
     <tbody>
@@ -17,13 +19,24 @@
                 <td><%= person.entry_time %></td>
                 <td><%= person.exit_time %></td>
                 <td>
+                    <% if !person.exit_time.nil? %>
+                        <%= ((person.exit_time - person.entry_time)/60).round(3).to_s %>
+                    <% end %>
+                <td>
                     <% if person.exit_time.nil? %>
                         <%= form_tag('/period/' + @period.id.to_s + '/person/' + person.id.to_s) do %>
+                            <%= hidden_field_tag 'balk', false %>
                             <%= submit_tag 'Exit!!! (Press here to stop Time)' %>
                         <% end %>
                     <% else %>
                         already exited
                     <% end %>
+                </td>
+                <td>
+                    <%= form_tag('/period/' + @period.id.to_s + '/person/' + person.id.to_s) do %>
+                            <%= hidden_field_tag 'balk', true %>
+                            <%= submit_tag 'Balk' %>
+                        <% end %>
                 </td>
             </tr>
         <% end %>

@@ -23,8 +23,12 @@ class PersonController < ApplicationController
 
     def end
         @person = Person.find(params[:person_id])
-        @person.exit_time = Time.now()
-
+        if params['balk']
+            @person.entry_time = Time.now()
+            @person.exit_time = Time.now()
+        else
+            @person.exit_time = Time.now()
+        end
         success = @person.save
 
         redirect_to :controller => 'period', :action => 'exit', :period_id => params[:period_id]

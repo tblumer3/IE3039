@@ -17,6 +17,7 @@ class PeriodController < ApplicationController
     def entry
         @period = Period.find(params[:period_id])
         @people = Person.where(period_id: @period.id).order('entry_time DESC')
+        @count = @people.length
     end
 
     def exit
