@@ -43,6 +43,7 @@ var made_person = function(data) {
     if ( $('#made_person').is(":hidden") ) {
         $('#made_person').show()
     };
+    $("#count").text(data.count);
 };
 
 

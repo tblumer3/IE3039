@@ -7,10 +7,13 @@ class PersonController < ApplicationController
         @person.entry_time = Time.now()
         success = @person.save
 
+        @people = Person.where(period_id: @period.id).order('entry_time DESC')
+        @count = @people.length
+
         respond_to do |format|
             format.json { 
                 if success 
-                    render json:  {'status' => @person}
+                    render json:  {'status' => @person, 'count' => @count }
                 else 
                     render json:  {'status' => 'failure'}
                 end
