@@ -26,9 +26,10 @@ class PersonController < ApplicationController
 
     def end
         @person = Person.find(params[:person_id])
-        if params['balk']
-            @person.entry_time = Time.now()
-            @person.exit_time = Time.now()
+        if params['balk'] == "true"
+            past_time = Time.now - 60*60*24
+            @person.entry_time = past_time
+            @person.exit_time = past_time
         else
             @person.exit_time = Time.now()
         end
